@@ -5,18 +5,21 @@ import { HomePage } from './pages/Home'
 import { DashboardPage } from './pages/Dashboard'
 import { LoginPage } from './pages/Auth/Login'
 import { RegisterPage } from './pages/Auth/Register'
+import SignUpPage from './pages/SignUpPage'
 
 function App() {
   return (
     <BrowserRouter>
-      <RootLayout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-        </Routes>
-      </RootLayout>
+      <Routes>
+        {/* Pages WITH navbar — RootLayout wraps each one directly */}
+        <Route path="/" element={<RootLayout><HomePage /></RootLayout>} />
+        <Route path="/dashboard" element={<RootLayout><DashboardPage /></RootLayout>} />
+        <Route path="/login" element={<RootLayout><LoginPage /></RootLayout>} />
+        <Route path="/register" element={<RootLayout><RegisterPage /></RootLayout>} />
+
+        {/* SignUp — completely standalone, no navbar */}
+        <Route path="/signup" element={<SignUpPage />} />
+      </Routes>
     </BrowserRouter>
   )
 }

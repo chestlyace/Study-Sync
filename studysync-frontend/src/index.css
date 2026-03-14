@@ -11,6 +11,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+:root {
+  --primary: #6324eb;
+  --bg-light: #f6f6f8;
+  --bg-dark: #161121;
+}
 
 *,
 *::before,

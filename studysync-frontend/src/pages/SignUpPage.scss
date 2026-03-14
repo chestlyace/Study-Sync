@@ -1,0 +1,113 @@
+.signup-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background-color: var(--bg-light);
+
+  .dark & { background-color: var(--bg-dark); }
+
+  &__content {
+    padding: 1rem 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__headline {
+    color: #111827;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-align: center;
+    padding: 1.5rem 1rem 0.5rem;
+
+    .dark & { color: #ffffff; }
+  }
+
+  &__subtext {
+    color: #4b5563;
+    font-size: 1rem;
+    text-align: center;
+    padding: 0.25rem 1rem 1.5rem;
+
+    .dark & { color: #9ca3af; }
+  }
+
+  &__form {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__submit {
+    padding: 0.25rem 1rem 0;
+  }
+
+  &__btn-primary {
+    width: 100%;
+    background-color: var(--primary);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 20px rgba(99, 36, 235, 0.25);
+
+    &:hover {
+      background-color: rgba(99, 36, 235, 0.9);
+      box-shadow: 0 6px 24px rgba(99, 36, 235, 0.35);
+    }
+  }
+
+  &__divider {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 1rem;
+  }
+
+  &__divider-line {
+    flex-grow: 1;
+    border-top: 1px solid #d1d5db;
+
+    .dark & { border-color: #374151; }
+  }
+
+  &__divider-text {
+    padding: 0 1rem;
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    .dark & { color: #9ca3af; }
+  }
+
+  &__social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0 1rem;
+  }
+
+  &__signin-link {
+    text-align: center;
+    padding: 2rem 1rem 3rem;
+    color: #4b5563;
+    font-size: 0.9375rem;
+
+    .dark & { color: #9ca3af; }
+  }
+
+  &__link {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+  }
+}
