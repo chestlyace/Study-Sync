@@ -1,0 +1,188 @@
+.account-privacy-page {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  background-color: #f6f6f8;
+  position: relative;
+
+  .dark & {
+    background-color: #161121;
+  }
+
+  &__content {
+    padding-bottom: 6rem; // space for bottom nav
+  }
+
+  // ── Section Title ──
+  &__section-title {
+    color: #111827;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 1.5rem 1rem 0.5rem;
+
+    .dark & {
+      color: #ffffff;
+    }
+
+    &--danger {
+      color: #ef4444;
+
+      .dark & {
+        color: #ef4444;
+      }
+    }
+  }
+
+  // ── White card that wraps list items ──
+  &__card {
+    background-color: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+
+    .dark & {
+      background-color: #1f1a2e;
+      border-color: #1f2937;
+    }
+  }
+
+  // ── Profile Visibility Segmented Control ──
+  &__visibility {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    border-bottom: 1px solid #f3f4f6;
+
+    .dark & {
+      border-bottom-color: #1f2937;
+    }
+  }
+
+  &__visibility-label {
+    color: #111827;
+    font-size: 1rem;
+    font-weight: 500;
+
+    .dark & {
+      color: #ffffff;
+    }
+  }
+
+  &__visibility-tabs {
+    display: flex;
+    background-color: #f6f6f8;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+
+    .dark & {
+      background-color: #161121;
+    }
+  }
+
+  &__visibility-tab {
+    flex: 1;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    border: none;
+    background: transparent;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &--active {
+      background-color: #ffffff;
+      color: #111827;
+      font-weight: 600;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+
+      .dark & {
+        background-color: #2d283e;
+        color: #ffffff;
+      }
+    }
+  }
+
+  // ── Academic Verify Row ──
+  &__verify-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    min-height: 4.5rem;
+  }
+
+  &__verify-title {
+    color: #111827;
+    font-size: 1rem;
+    font-weight: 500;
+
+    .dark & {
+      color: #ffffff;
+    }
+  }
+
+  &__verify-subtitle {
+    color: #6b7280;
+    font-size: 0.75rem;
+    margin-top: 0.125rem;
+  }
+
+  &__verify-btn {
+    background-color: rgba(99, 36, 235, 0.1);
+    color: #6324eb;
+    padding: 0.375rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: rgba(99, 36, 235, 0.18);
+    }
+  }
+
+  // ── Danger Button ──
+  &__danger-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1rem;
+    min-height: 3.5rem;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ef4444;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: rgba(239, 68, 68, 0.05);
+    }
+
+    .material-symbols-outlined {
+      font-size: 1.375rem;
+    }
+  }
+
+  // ── Footer ──
+  &__footer {
+    padding: 2rem 1rem;
+    text-align: center;
+
+    p {
+      color: #9ca3af;
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
+  }
+}

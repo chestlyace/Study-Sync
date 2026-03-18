@@ -6,6 +6,7 @@ import { DashboardPage } from './pages/Dashboard'
 import { LoginPage } from './pages/Auth/Login'
 import { RegisterPage } from './pages/Auth/Register'
 import SignUpPage from './pages/SignUpPage'
+import AccountPrivacyPage from './pages/AccountPrivacyPage'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
 
         {/* SignUp — completely standalone, no navbar */}
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/settings/account" element={<AccountPrivacyPage />} />
       </Routes>
     </BrowserRouter>
   )
