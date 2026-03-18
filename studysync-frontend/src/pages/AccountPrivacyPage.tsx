@@ -6,10 +6,10 @@ import BottomNavBar from '../components/settings/BottomNavBar';
 import './AccountPrivacyPage.scss';
 
 const AccountPrivacyPage: React.FC = () => {
-  // tracks which visibility button is selected
+  
   const [visibility, setVisibility] = useState<'Public' | 'Institution' | 'Private'>('Public');
 
-  // tracks the two toggle states
+  
   const [hideLastName, setHideLastName] = useState(true);
   const [disableDMs, setDisableDMs] = useState(false);
 
