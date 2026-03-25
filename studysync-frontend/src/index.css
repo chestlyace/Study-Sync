@@ -16,6 +16,29 @@
   --bg-light: #f6f6f8;
   --bg-dark: #161121;
 }
+:root {
+  --primary: #6324eb;
+  --bg-light: #f6f6f8;
+  --bg-dark: #161121;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f6f6f8;
+  min-height: 100dvh;
+}
 
 *,
 *::before,

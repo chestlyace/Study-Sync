@@ -1,0 +1,82 @@
+.hero-illustration {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+  box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.06);
+  animation: hero-fade-in 0.7s ease both;
+
+  .dark & {
+    background: linear-gradient(135deg, #2a2444, #1e1a35);
+  }
+
+  &__blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(40px);
+    pointer-events: none;
+
+    &--top {
+      top: -20%;
+      right: -20%;
+      width: 12rem;
+      height: 12rem;
+      background-color: rgba(53, 18, 226, 0.1);
+    }
+
+    &--bottom {
+      bottom: -10%;
+      left: -10%;
+      width: 8rem;
+      height: 8rem;
+      background-color: rgba(168, 85, 247, 0.1);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.4s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(246, 246, 248, 0.2),
+      transparent
+    );
+    z-index: 2;
+
+    .dark & {
+      background: linear-gradient(
+        to top,
+        rgba(19, 16, 34, 0.2),
+        transparent
+      );
+    }
+  }
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

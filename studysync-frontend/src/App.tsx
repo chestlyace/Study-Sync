@@ -8,6 +8,8 @@ import { RegisterPage } from './pages/Auth/Register'
 import SignUpPage from './pages/SignUpPage'
 import AccountPrivacyPage from './pages/AccountPrivacyPage'
 import BuddyMatchPage from './pages/BuddyMatchPage'
+import BuddyMatchPreferencesPage from './pages/BuddyMatchPreferencesPage'
+import CompatibilityQuizPage from './pages/CompatibilityQuizPage'
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/settings/account" element={<AccountPrivacyPage />} />
         <Route path="/buddy-match" element={<BuddyMatchPage />} />
+        <Route path="/buddy-preferences" element={<BuddyMatchPreferencesPage />} />
+        <Route path="/quiz" element={<CompatibilityQuizPage />} />
       </Routes>
     </BrowserRouter>
   )
