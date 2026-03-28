@@ -11,14 +11,14 @@ async function runMigrations() {
 
     // Check if DATABASE_URL is somehow given, otherwise use defaults
     const client = new Client({
-        connectionString: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/studysync'
+        connectionString: process.env.DATABASE_URL || 'postgresql://postgres:angelzee@localhost:5432/studysync'
     });
 
     try {
         await client.connect();
         console.log('Successfully connected to the database.');
 
-        const migrationsDir = path.resolve(__dirname, 'migrations');
+        const migrationsDir = path.resolve(__dirname);
         if (!fs.existsSync(migrationsDir)) {
             console.log('No migrations directory found.');
             return;

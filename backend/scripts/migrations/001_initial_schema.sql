@@ -5,7 +5,7 @@
 
 -- Enable required extensions
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-CREATE EXTENSION IF NOT EXISTS "postgis";     -- For geolocation
+-- CREATE EXTENSION IF NOT EXISTS "postgis";     -- For geolocation
 CREATE EXTENSION IF NOT EXISTS "pg_trgm";     -- For text search optimization
 CREATE EXTENSION IF NOT EXISTS "btree_gin";   -- For composite indexes
 
@@ -28,7 +28,8 @@ CREATE TABLE institutions (
     region VARCHAR(100),
     country VARCHAR(3) DEFAULT 'CMR',
     address TEXT,
-    coordinates GEOGRAPHY(POINT, 4326), -- PostGIS point
+    latitude DECIMAL(10, 8),
+    longitude DECIMAL(11, 8),
     
     -- Type & System
     type VARCHAR(50) NOT NULL, -- public_university, private_university, grande_ecole
@@ -59,15 +60,14 @@ CREATE TABLE institutions (
 CREATE INDEX idx_institutions_city ON institutions(city);
 CREATE INDEX idx_institutions_type ON institutions(type);
 CREATE INDEX idx_institutions_active ON institutions(active);
-CREATE INDEX idx_institutions_coordinates ON institutions USING GIST(coordinates);
-CREATE INDEX idx_institutions_search ON institutions USING GIN(
-    to_tsvector('simple', 
-        COALESCE(name, '') || ' ' || 
-        COALESCE(name_fr, '') || ' ' || 
-        COALESCE(name_en, '') || ' ' || 
-        COALESCE(acronym, '')
-    )
-);
+-- CREATE INDEX idx_institutions_search ON institutions USING GIN(
+--     to_tsvector('simple', 
+--         COALESCE(name, '') || ' ' || 
+--         COALESCE(name_fr, '') || ' ' || 
+--         COALESCE(name_en, '') || ' ' || 
+--         COALESCE(acronym, '')
+--     )
+-- );
 
 COMMENT ON TABLE institutions IS 'Universities and educational institutions in Cameroon';
 
@@ -194,7 +194,7 @@ CREATE INDEX idx_users_active ON users(active) WHERE deleted_at IS NULL;
 CREATE INDEX idx_users_created ON users(created_at DESC);
 CREATE INDEX idx_users_campus_location ON users USING GIN(campus_location);
 CREATE INDEX idx_users_availability ON users USING GIN(availability);
-CREATE INDEX idx_users_name_search ON users USING GIN(to_tsvector('simple', name));
+-- CREATE INDEX idx_users_name_search ON users USING GIN(to_tsvector('simple', name));
 
 COMMENT ON TABLE users IS 'Student user accounts';
 COMMENT ON COLUMN users.study_preferences IS 'JSONB object containing study preferences';
@@ -250,14 +250,14 @@ CREATE INDEX idx_courses_faculty ON courses(faculty);
 CREATE INDEX idx_courses_department ON courses(department);
 CREATE INDEX idx_courses_level ON courses(level);
 CREATE INDEX idx_courses_active ON courses(active);
-CREATE INDEX idx_courses_search ON courses USING GIN(
-    to_tsvector('simple', 
-        COALESCE(code, '') || ' ' || 
-        COALESCE(name, '') || ' ' || 
-        COALESCE(name_fr, '') || ' ' || 
-        COALESCE(name_en, '')
-    )
-);
+-- CREATE INDEX idx_courses_search ON courses USING GIN(
+--     to_tsvector('simple', 
+--         COALESCE(code, '') || ' ' || 
+--         COALESCE(name, '') || ' ' || 
+--         COALESCE(name_fr, '') || ' ' || 
+--         COALESCE(name_en, '')
+--     )
+-- );
 
 COMMENT ON TABLE courses IS 'Academic courses offered by institutions';
 
@@ -435,9 +435,9 @@ CREATE INDEX idx_groups_upcoming ON study_groups(date, start_time)
     WHERE status = 'published' AND date >= CURRENT_DATE AND deleted_at IS NULL;
 CREATE INDEX idx_groups_location_details ON study_groups USING GIN(location_details);
 CREATE INDEX idx_groups_tags ON study_groups USING GIN(tags);
-CREATE INDEX idx_groups_search ON study_groups USING GIN(
-    to_tsvector('simple', COALESCE(title, '') || ' ' || COALESCE(description, ''))
-);
+-- CREATE INDEX idx_groups_search ON study_groups USING GIN(
+--     to_tsvector('simple', COALESCE(title, '') || ' ' || COALESCE(description, ''))
+-- );
 
 -- Partial indexes for common queries
 CREATE INDEX idx_groups_active_upcoming ON study_groups(date, start_time) 
@@ -1216,4 +1216,3 @@ ORDER BY sg.date DESC, sg.start_time DESC;
 -- Consider read replicas for heavy read workloads
 
 COMMENT ON DATABASE studysync IS 'StudySync - Student collaboration platform for Cameroon';
-```
